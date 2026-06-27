@@ -8,8 +8,10 @@ import {
   FaRegCheckCircle,
 } from "react-icons/fa";
 import { toast } from "sonner";
+import { useNavigate } from "react-router";
 
 const Home = () => {
+  const navigate = useNavigate();
   // Handler to copy email
   const copyEmail = async () => {
     try {
@@ -79,7 +81,7 @@ const Home = () => {
       <h1 className=" text-xl sm:text-5xl italic my-4">
         <span className="flex items-center gap-1 group">
           Building modern
-          <span className="text-muted flex items-center gap-1 group-hover:text-primary transition-all duration-300 cursor-pointer">
+          <span className="text-muted flex items-center gap-1 group-hover:text-primary transition-all duration-300 cursor-pointer" onClick={() => navigate("/projects")}>
             web applications{" "}
             <ArrowUpRight className="size-5 group-hover:translate-y-[-2px] group-hover:translate-x-[2px] transition-all duration-300" />
           </span>
@@ -87,7 +89,7 @@ const Home = () => {
         </span>
         <span className="flex items-center gap-1 group">
           AI-powered products &
-          <span className="text-muted flex items-center gap-1 group-hover:text-primary transition-all duration-300 cursor-pointer ">
+          <span className="text-muted flex items-center gap-1 group-hover:text-primary transition-all duration-300 cursor-pointer " onClick={() => navigate("/projects")}>
             software.
             <ArrowUpRight className="size-5 group-hover:translate-y-[-2px] group-hover:translate-x-[2px] transition-all duration-300" />
           </span>

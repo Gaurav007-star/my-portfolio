@@ -82,7 +82,7 @@ const Project = () => {
                   </span>
                 </div>
 
-                <p className="w-[90%]">{item.description}</p>
+                <p className="w-full">{item.description}</p>
 
                 <div className="bottom-section mt-5 flex flex-col sm:flex-row items-start sm:items-center justify-between">
                   <Breadcrumb className="">
@@ -101,10 +101,10 @@ const Project = () => {
                   </Breadcrumb>
 
                   <div className="button-links flex items-center justify-center mt-5 sm:mt-0">
-                    <Button variant="link" className="text-primary/50 mx-0!">
+                    <Button variant="link" className="text-primary/50 mx-0!" onClick={() => window.open(item.liveLink, '_blank')}>
                       Live <Globe />
                     </Button>
-                    <Button variant="link" className="text-foreground/60 mx-0!">
+                    <Button variant="link" className="text-foreground/60 mx-0!" onClick={() => window.open(item.codeLink, '_blank')}>
                       Git <FaGithub />
                     </Button>
                   </div>
