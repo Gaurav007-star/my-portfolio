@@ -37,6 +37,15 @@ export const projectsData: projectInterface[] = [
     codeLink: "https://github.com/Gaurav007-star/AI-Trip-Planner",
   },
   {
+    name: "MARQUVE",
+    type: "Digital Marketing Landing Page",
+    description:
+      "A sleek and conversion-focused landing page designed for modern digital marketing agencies. Showcases services, success stories, client testimonials, pricing, and clear call-to-actions with responsive design, smooth animations, and optimized user experience.",
+    techStack: ["React", "TypeScript", "Vite", "Tailwind CSS", "shadcn/ui"],
+    liveLink: "https://marqv-landing.vercel.app",
+    codeLink: "https://github.com/Gaurav007-star/Marqv-landing",
+  },
+  {
     name: "Bangla Bijoy Editor",
     type: "AI-Powered Bengali Text Editor",
     description:
@@ -53,15 +62,7 @@ export const projectsData: projectInterface[] = [
     liveLink: "https://bengali-editor.vercel.app/",
     codeLink: "https://github.com/Gaurav007-star/avro-bijoy",
   },
-  {
-    name: "MARQUVE",
-    type: "Digital Marketing Landing Page",
-    description:
-      "A sleek and conversion-focused landing page designed for modern digital marketing agencies. Showcases services, success stories, client testimonials, pricing, and clear call-to-actions with responsive design, smooth animations, and optimized user experience.",
-    techStack: ["React", "TypeScript", "Vite", "Tailwind CSS", "shadcn/ui"],
-    liveLink: "https://marqv-landing.vercel.app",
-    codeLink: "https://github.com/Gaurav007-star/Marqv-landing",
-  },
+
   {
     name: "Farmeso",
     type: "AgriTech Landing Page",

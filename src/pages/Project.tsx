@@ -1,4 +1,3 @@
-import { Fragment } from "react";
 import { Button } from "@/components/ui/button";
 import { HiOutlineArrowLongLeft } from "react-icons/hi2";
 import { useNavigate } from "react-router";
@@ -12,24 +11,25 @@ import {
 } from "@/components/ui/breadcrumb";
 import Navbar from "@/components/custom/Navbar";
 import { projectsData, type projectInterface } from "@/lib/utils";
-import { Globe , Hammer} from "lucide-react";
-import { BsFillCircleFill } from "react-icons/bs";
+import { Globe, ArrowUpRight, Hammer } from "lucide-react";
 import { FaGithub } from "react-icons/fa";
-
-
-
 
 const Project = () => {
   const navigate = useNavigate();
   return (
     <div className="w-full h-max flex flex-col items-start gap-2 p-5 sm:px-10 sm:py-[10vh]">
-      {/* top -return - link */}
-      <Button variant="link" onClick={() => navigate("/")}>
-        <HiOutlineArrowLongLeft /> go to home
+      {/* top - return link */}
+      <Button
+        variant="link"
+        onClick={() => navigate("/")}
+        className="hover:text-foreground transition-colors duration-200 group px-0"
+      >
+        <HiOutlineArrowLongLeft className="group-hover:-translate-x-0.5 transition-transform duration-200" />
+        go to home
       </Button>
 
-      {/* User breadcramp */}
-      <Breadcrumb className="">
+      {/* User breadcrumb */}
+      <Breadcrumb>
         <BreadcrumbList className="gap-0!">
           <BreadcrumbItem>
             <BreadcrumbLink>Gaurav Sarkar</BreadcrumbLink>
@@ -43,7 +43,7 @@ const Project = () => {
         </BreadcrumbList>
       </Breadcrumb>
 
-      <section className="w-full h-max ">
+      <section className="w-full h-max">
         {/* title */}
         <h1 className="text-5xl italic mt-4 mb-10">
           Building <span className="text-muted">Products</span>, Not Just
@@ -63,49 +63,69 @@ const Project = () => {
 
       {/* projects - section */}
       <section className="w-full h-max mt-10">
-        <h1 className="text-2xl mb-5 flex items-center gap-1 italic">Selected Work </h1>
 
-        <div className="project-wrapper w-full h-max flex flex-col gap-10">
+        {/* section heading — flush with page content */}
+        <div className="flex w-full h-max items-baseline justify-between mb-6 pr-5 ">
+          <h2 className="text-2xl italic text-foreground/80">Selected Work</h2>
+          <span className="text-xs font-mono text-foreground/30 tabular-nums">
+            ({projectsData.length})
+          </span>
+        </div>
+
+        <div className="project-wrapper w-full flex flex-col">
           {projectsData.map((item: projectInterface, index: number) => {
             return (
               <div
-                className="products w-full h-max flex flex-col gap-3 bg-secondary/20 text-foreground/60 p-4 rounded-md"
                 key={index}
+                className="group w-full flex flex-col gap-3 py-6 border-b border-border/40 last:border-0 transition-colors duration-200 hover:bg-secondary/20 rounded-md px-3 -mx-3"
               >
-                <div className="top-section w-full h-max flex items-center gap-4">
-                  <div className="flex items-center gap-1">
-                    <Hammer className="size-4 " />
-                    <span className="font-medium text-lg">{item.name}</span>
+                {/* row 1: name + type + number */}
+                <div className="flex items-baseline justify-between gap-4 ">
+                  <div className="flex items-baseline gap-2.5 flex-wrap min-w-0">
+                    <span className="font-semibold flex items-center gap-1 text-base text-foreground/65 leading-tight group-hover:text-foreground transition-colors duration-200 shrink-0">
+                      <Hammer className="size-5"/>{item.name}
+                    </span>
+                    <span className="text-sm text-foreground/35 italic truncate">
+                      — {item.type}
+                    </span>
                   </div>
-                  <span className="text-foreground/60 text-sm tracking-wide">
-                    {item.type}
+                  <span className="text-xs text-foreground/20 font-mono tabular-nums shrink-0">
+                    {String(index + 1).padStart(2, "0")}
                   </span>
                 </div>
 
-                <p className="w-full">{item.description}</p>
+                {/* row 2: description */}
+                <p className="text-foreground/50 leading-relaxed text-[16px]">
+                  {item.description}
+                </p>
 
-                <div className="bottom-section mt-5 flex flex-col sm:flex-row items-start sm:items-center justify-between">
-                  <Breadcrumb className="">
-                    <BreadcrumbList className="gap-0!">
-                      {item.techStack.map((tech: string, index: number) => (
-                        <Fragment key={index}>
-                          <BreadcrumbItem>
-                            <BreadcrumbLink className="text-foreground/60">{tech}</BreadcrumbLink>
-                          </BreadcrumbItem>
-                          {index < item.techStack.length - 1 && (
-                            <BsFillCircleFill className="size-1 text-primary/60 mx-2" />
-                          )}
-                        </Fragment>
-                      ))}
-                    </BreadcrumbList>
-                  </Breadcrumb>
+                {/* row 3: tech + links — bottom-aligned */}
+                <div className="flex flex-col sm:flex-row items-start sm:items-end justify-between gap-2 py-4">
+                  <p className="text-foreground/28 text-sm leading-relaxed sm:w-[72%] ">
+                    {item.techStack.join("  ·  ")}
+                  </p>
 
-                  <div className="button-links flex items-center justify-center mt-5 sm:mt-0">
-                    <Button variant="link" className="text-primary/50 mx-0!" onClick={() => window.open(item.liveLink, '_blank')}>
-                      Live <Globe />
+                  <div className="flex items-center shrink-0 -mr-3">
+                    <Button
+                      variant="link"
+                      size="sm"
+                      onClick={() => window.open(item.liveLink, "_blank")}
+                      className="group/live text-foreground/40 hover:text-foreground transition-colors duration-200 gap-1"
+                    >
+                      <Globe className="size-3 group-hover/live:rotate-12 transition-transform duration-200" />
+                      Live
+                      <ArrowUpRight className="size-3 group-hover/live:translate-x-0.5 group-hover/live:-translate-y-0.5 transition-transform duration-200" />
                     </Button>
-                    <Button variant="link" className="text-foreground/60 mx-0!" onClick={() => window.open(item.codeLink, '_blank')}>
-                      Git <FaGithub />
+
+                    <Button
+                      variant="link"
+                      size="sm"
+                      onClick={() => window.open(item.codeLink, "_blank")}
+                      className="group/code text-foreground/40 hover:text-foreground transition-colors duration-200 gap-1"
+                    >
+                      <FaGithub className="size-3 group-hover/code:scale-110 transition-transform duration-200" />
+                      Code
+                      <ArrowUpRight className="size-3 group-hover/code:translate-x-0.5 group-hover/code:-translate-y-0.5 transition-transform duration-200" />
                     </Button>
                   </div>
                 </div>
