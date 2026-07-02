@@ -62,7 +62,6 @@ export const projectsData: projectInterface[] = [
     liveLink: "https://bengali-editor.vercel.app/",
     codeLink: "https://github.com/Gaurav007-star/avro-bijoy",
   },
-
   {
     name: "Farmeso",
     type: "AgriTech Landing Page",
